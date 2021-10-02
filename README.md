@@ -2,9 +2,9 @@
 
 > This is a react typescript boilerplate setup for any projects
 
-<!-- ### View Live Demo: https://react-data-table-rho.vercel.app/ -->
+### View Live Demo: https://vercel.com/nabedkhan/react-typescript-starter-kit
 
-<!-- ![screenshot](https://github.com/nabedkhan/React-Data-Table/blob/main/screenshot.png) -->
+![screenshot](https://github.com/nabedkhan/react-typescript-starter-kit/blob/main/screenshot.png)
 
 ## Features
 
