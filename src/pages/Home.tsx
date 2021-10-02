@@ -1,17 +1,28 @@
-import { Card, Container, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  Container,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Typography
+} from '@mui/material';
 import { Box } from '@mui/system';
 import { SettingsContext } from 'contexts/settingsContext';
-import React, { useContext } from 'react';
+import useLocalStorage from 'hooks/useLocalStorage';
+import React, { ChangeEvent, useContext } from 'react';
+import themeSettingsTypes from '../@types/themeSettings';
 
 const Home = () => {
   const { settings, saveSettings } = useContext(SettingsContext);
+  const { data, storeData } = useLocalStorage('user', {});
 
-  const handleChangeDirection = (event: React.ChangeEvent<HTMLInputElement>) => {
-    saveSettings({ ...settings, direction: event.target.value });
+  const handleChangeDirection = (event: ChangeEvent<HTMLInputElement>) => {
+    saveSettings({ ...settings, direction: event.target.value } as themeSettingsTypes);
   };
 
-  const handleChangeTheme = (event: React.ChangeEvent<HTMLInputElement>) => {
-    saveSettings({ ...settings, theme: event.target.value });
+  const handleChangeTheme = (event: ChangeEvent<HTMLInputElement>) => {
+    saveSettings({ ...settings, theme: event.target.value } as themeSettingsTypes);
   };
 
   return (
@@ -35,6 +46,23 @@ const Home = () => {
             <FormControlLabel value="light" control={<Radio />} label="Light Theme" />
             <FormControlLabel value="dark" control={<Radio />} label="Dark Theme" />
           </RadioGroup>
+        </Box>
+
+        <Box my={4}>
+          <Button
+            variant="contained"
+            onClick={() => {
+              storeData({
+                name: 'Jon Maz',
+                email: 'nabed420@gmail.com',
+                isLoggedIn: true
+              });
+            }}
+          >
+            Store Data in Local Storage
+          </Button>
+
+          <Typography variant="h3">{data && data.isLoggedIn && data.name}</Typography>
         </Box>
       </Card>
     </Container>

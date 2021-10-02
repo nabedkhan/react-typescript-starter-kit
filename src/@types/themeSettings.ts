@@ -1,6 +1,6 @@
 type themeSettingsTypes = {
   theme: string;
-  direction: string;
+  direction: 'ltr' | 'rtl';
   roundedCorners?: boolean;
   responsiveFontSizes?: boolean;
 };
